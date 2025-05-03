@@ -7,7 +7,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import java.util.List;
 
 import static archives.tater.mixinblacklist.MixinBlacklist.ENTRIES;
-import static archives.tater.mixinblacklist.MixinBlacklist.LOGGER;
 
 public class MixinBlacklistCanceller implements MixinCanceller {
 
@@ -17,7 +16,6 @@ public class MixinBlacklistCanceller implements MixinCanceller {
         for (var entry : ENTRIES) {
             if (!isClient && entry.isClient) continue;
             if (entry.isTarget ? !targetClassNames.contains(entry.className) : !entry.className.equals(mixinClassName)) continue;
-            LOGGER.info("Cancelling mixin {} on classes {}", mixinClassName, targetClassNames);
             entry.setApplied();
             return true;
         }
