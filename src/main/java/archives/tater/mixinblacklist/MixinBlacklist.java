@@ -3,6 +3,8 @@ package archives.tater.mixinblacklist;
 import com.google.common.collect.Streams;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
@@ -49,7 +51,7 @@ public class MixinBlacklist implements ModInitializer {
             } catch (IOException e2) {
                 LOGGER.error("Could not write config", e2);
             }
-        } catch (IOException e) {
+        } catch (IOException | JsonSyntaxException | JsonIOException e) {
             LOGGER.error("Could not read config", e);
         }
 
@@ -66,7 +68,7 @@ public class MixinBlacklist implements ModInitializer {
     public void onInitialize() {
         for (var entry : ENTRIES) {
             if (entry.isClient || entry.isApplied()) continue;
-            LOGGER.warn("Mixin cancel {} was not applied", entry);
+            LOGGER.warn("Mixin cancel {} was not applied during startup", entry);
         }
     }
 }

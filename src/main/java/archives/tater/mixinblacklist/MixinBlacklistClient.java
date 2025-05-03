@@ -9,7 +9,7 @@ public class MixinBlacklistClient implements ClientModInitializer {
     public void onInitializeClient() {
         for (var entry : MixinBlacklist.ENTRIES) {
             if (!entry.isClient || entry.isApplied()) continue;
-            LOGGER.warn("Mixin cancel {} was not applied", entry);
+            LOGGER.warn("Mixin cancel {} was not applied during startup", entry);
         }
     }
 }
