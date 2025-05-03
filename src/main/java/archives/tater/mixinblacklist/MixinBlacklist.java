@@ -35,7 +35,7 @@ public class MixinBlacklist implements ModInitializer {
     public static final List<Entry> ENTRIES = new ArrayList<>();
 
     static {
-        LOGGER.info("Reading config");
+        LOGGER.debug("Reading config");
 
         Config config = null;
 
