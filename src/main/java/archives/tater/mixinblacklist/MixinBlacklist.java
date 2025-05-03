@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
-import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MixinBlacklist implements ModInitializer {
+public class MixinBlacklist {
     public static final String MOD_ID = "mixinblacklist";
 
     // This logger is used to write text to the console and the log file.
@@ -62,13 +61,5 @@ public class MixinBlacklist implements ModInitializer {
                     config.client.mixinClassNames.stream().map(it -> new Entry(it, false, true)),
                     config.client.targetClassNames.stream().map(it -> new Entry(it, true, true))
             ).collect(Collectors.toCollection(() -> ENTRIES));
-    }
-
-    @Override
-    public void onInitialize() {
-        for (var entry : ENTRIES) {
-            if (entry.isClient || entry.isApplied()) continue;
-            LOGGER.warn("Mixin cancel {} was not applied during startup", entry);
-        }
     }
 }

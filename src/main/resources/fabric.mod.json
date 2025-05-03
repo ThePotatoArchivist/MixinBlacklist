@@ -15,12 +15,6 @@
 	"icon": "assets/mixinblacklist/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"archives.tater.mixinblacklist.MixinBlacklist"
-		],
-		"client": [
-			"archives.tater.mixinblacklist.MixinBlacklistClient"
-		],
 		"mixinsquared": [
 			"archives.tater.mixinblacklist.MixinBlacklistCanceller"
 		]
