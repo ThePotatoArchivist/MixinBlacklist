@@ -2,16 +2,16 @@
 	"schemaVersion": 1,
 	"id": "mixinblacklist",
 	"version": "${version}",
-	"name": "MixinBlacklist",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Mixin Blacklist",
+	"description": "Disable certain mixins for modpacks",
 	"authors": [
-		"Me!"
+		"ThePotatoArchivist"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/mixinblacklist",
+		"sources": "https://github.com/ThePotatoArchivist/MixinBlacklist"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/mixinblacklist/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -30,11 +30,9 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",
-		"minecraft": "~1.20.1",
-		"java": ">=17",
-		"fabric-api": "*"
+		"minecraft": "*",
+		"java": ">=17"
 	},
 	"suggests": {
-		"another-mod": "*"
 	}
 }
