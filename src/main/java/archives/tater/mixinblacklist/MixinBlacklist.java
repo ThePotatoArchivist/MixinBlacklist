@@ -36,22 +36,22 @@ public class MixinBlacklist {
     public static final List<Entry> ENTRIES = new ArrayList<>();
 
     static {
-        LOGGER.debug("Reading config");
+        LOGGER.debug("Mixin Blacklist: Reading config");
 
         Config config = null;
 
         try {
             config = BUILDER.fromJson(Files.newBufferedReader(CONFIG_PATH), Config.class);
         } catch (NoSuchFileException e) {
-            LOGGER.info("Creating empty config");
+            LOGGER.info("Mixin Blacklist: Creating empty config");
 
             try {
                 Files.writeString(CONFIG_PATH, BUILDER.toJson(new Config()));
             } catch (IOException e2) {
-                LOGGER.error("Could not write config", e2);
+                LOGGER.error("Mixin Blacklist: Could not write config", e2);
             }
         } catch (IOException | JsonSyntaxException | JsonIOException e) {
-            LOGGER.error("Could not read config", e);
+            LOGGER.error("Mixin Blacklist: Could not read config", e);
         }
 
         if (config != null)
